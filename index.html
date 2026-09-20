@@ -1,13 +1,777 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cloud CI/CD Project</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Sagar Electricals | Vrindavan</title>
+
+  <meta name="description"
+        content="Sagar Electricals - Electrical products and solutions at Attla Chungi, Parikrama Marg, Vrindavan.">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f6f8fc;
+      color: #172033;
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      width: min(1120px, 92%);
+      margin: auto;
+    }
+
+    /* NAVBAR */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(255,255,255,.95);
+      border-bottom: 1px solid #e7eaf0;
+      backdrop-filter: blur(10px);
+    }
+
+    nav {
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      font-size: 22px;
+      color: #111827;
+    }
+
+    .logo-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      background: #f5b400;
+      display: grid;
+      place-items: center;
+      font-size: 22px;
+    }
+
+    .navlinks {
+      display: flex;
+      gap: 25px;
+      font-weight: 600;
+      color: #4b5563;
+    }
+
+    .navlinks a:hover {
+      color: #d99000;
+    }
+
+    /* HERO */
+    .hero {
+      padding: 90px 0 80px;
+      background: linear-gradient(
+        135deg,
+        #101827 0%,
+        #1d2a43 55%,
+        #263b60 100%
+      );
+      color: white;
+      overflow: hidden;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .badge {
+      display: inline-block;
+      background: rgba(245,180,0,.15);
+      border: 1px solid rgba(245,180,0,.4);
+      color: #ffd45a;
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-weight: 700;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      font-size: clamp(42px, 6vw, 70px);
+      line-height: 1.05;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      font-size: 19px;
+      color: #d6deeb;
+      max-width: 650px;
+      margin-bottom: 30px;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 13px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 13px 20px;
+      border-radius: 12px;
+      font-weight: 800;
+    }
+
+    .primary {
+      background: #f5b400;
+      color: #172033;
+    }
+
+    .secondary {
+      border: 1px solid #61708a;
+      color: white;
+      background: rgba(255,255,255,.05);
+    }
+
+    .hero-card {
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.13);
+      padding: 28px;
+      border-radius: 24px;
+      box-shadow: 0 20px 60px rgba(0,0,0,.2);
+    }
+
+    .hero-card .big {
+      font-size: 70px;
+      text-align: center;
+      margin-bottom: 12px;
+    }
+
+    .hero-card h3 {
+      text-align: center;
+      font-size: 23px;
+      margin-bottom: 8px;
+    }
+
+    .hero-card p {
+      text-align: center;
+      font-size: 15px;
+      margin: 0;
+    }
+
+    /* SECTIONS */
+    section {
+      padding: 75px 0;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 42px;
+    }
+
+    .section-title h2 {
+      font-size: 38px;
+      margin-bottom: 10px;
+    }
+
+    .section-title p {
+      color: #687386;
+    }
+
+    /* PRODUCTS */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .card {
+      background: white;
+      border: 1px solid #e7eaf0;
+      border-radius: 18px;
+      padding: 25px;
+      box-shadow: 0 8px 25px rgba(20,30,50,.05);
+      transition: .25s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 14px 32px rgba(20,30,50,.1);
+    }
+
+    .icon {
+      font-size: 35px;
+      margin-bottom: 12px;
+    }
+
+    .card h3 {
+      margin-bottom: 7px;
+    }
+
+    .card p {
+      color: #697386;
+      font-size: 14px;
+    }
+
+    /* ABOUT */
+    .about {
+      background: white;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .about-box {
+      background: #fff7df;
+      border: 1px solid #f5df9d;
+      border-radius: 24px;
+      padding: 35px;
+    }
+
+    .about h2 {
+      font-size: 38px;
+      margin-bottom: 15px;
+    }
+
+    .about p {
+      color: #667085;
+      margin-bottom: 15px;
+    }
+
+    .ticks {
+      display: grid;
+      gap: 10px;
+      margin-top: 18px;
+      font-weight: 700;
+    }
+
+    .ticks div::before {
+      content: "✓";
+      color: #d99000;
+      margin-right: 9px;
+    }
+
+    /* CONTACT */
+    .contact {
+      background: #101827;
+      color: white;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 35px;
+    }
+
+    .contact h2 {
+      font-size: 38px;
+      margin-bottom: 15px;
+    }
+
+    .contact p {
+      color: #cbd5e1;
+    }
+
+    .contact-card {
+      background: #1c273b;
+      border: 1px solid #33415b;
+      border-radius: 20px;
+      padding: 28px;
+    }
+
+    .contact-item {
+      display: flex;
+      gap: 14px;
+      margin: 18px 0;
+    }
+
+    .contact-item span:first-child {
+      font-size: 24px;
+    }
+
+    .contact-item strong {
+      display: block;
+      color: white;
+    }
+
+    .contact-item div {
+      color: #cbd5e1;
+    }
+
+    /* FOOTER */
+    footer {
+      background: #0b111c;
+      color: #94a3b8;
+      text-align: center;
+      padding: 22px;
+    }
+
+    /* WHATSAPP FLOAT BUTTON */
+    .float {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      background: #20b85a;
+      color: white;
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-size: 28px;
+      box-shadow: 0 8px 25px rgba(0,0,0,.25);
+      z-index: 30;
+    }
+
+    /* RESPONSIVE */
+    @media(max-width:850px) {
+
+      .navlinks {
+        display: none;
+      }
+
+      .hero-grid,
+      .about-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding: 65px 0;
+      }
+
+      .cards {
+        grid-template-columns: repeat(2,1fr);
+      }
+    }
+
+    @media(max-width:520px) {
+
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      section {
+        padding: 55px 0;
+      }
+
+      .section-title h2,
+      .about h2,
+      .contact h2 {
+        font-size: 31px;
+      }
+
+      .hero p {
+        font-size: 17px;
+      }
+    }
+  </style>
 </head>
+
 <body>
-    <h1>Cloud CI/CD Deployment Platform</h1>
-    <p>Application deployed using DevOps and Cloud technologies.</p>
-    <p>Version: 1.0</p>
+
+  <!-- NAVBAR -->
+  <header>
+    <div class="container">
+      <nav>
+
+        <a class="logo" href="#home">
+          <span class="logo-icon">⚡</span>
+          <span>Sagar Electricals</span>
+        </a>
+
+        <div class="navlinks">
+          <a href="#home">Home</a>
+          <a href="#products">Products</a>
+          <a href="#services">Services</a>
+          <a href="#contact">Contact</a>
+        </div>
+
+      </nav>
+    </div>
+  </header>
+
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+
+    <div class="container hero-grid">
+
+      <div>
+
+        <span class="badge">
+          ⚡ Electrical Solutions • Vrindavan
+        </span>
+
+        <h1>
+          Powering your home with the right electrical products.
+        </h1>
+
+        <p>
+          Welcome to <strong>Sagar Electricals</strong> —
+          your local electrical shop at Attla Chungi,
+          Parikrama Marg, Vrindavan.
+        </p>
+
+        <div class="buttons">
+
+          <a class="btn primary"
+             href="tel:+919927780660">
+            📞 Call Now
+          </a>
+
+          <a class="btn secondary"
+             href="https://wa.me/919927780660"
+             target="_blank">
+            💬 WhatsApp Us
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <div class="hero-card">
+
+        <div class="big">
+          💡
+        </div>
+
+        <h3>
+          Reliable Electrical Solutions
+        </h3>
+
+        <p>
+          Quality products, helpful service and
+          a convenient local shopping experience.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- PRODUCTS -->
+  <section id="products">
+
+    <div class="container">
+
+      <div class="section-title">
+
+        <h2>
+          Our Products
+        </h2>
+
+        <p>
+          Electrical essentials for homes,
+          shops and everyday needs.
+        </p>
+
+      </div>
+
+
+      <div class="cards">
+
+        <div class="card">
+
+          <div class="icon">
+            💡
+          </div>
+
+          <h3>
+            LED Lights
+          </h3>
+
+          <p>
+            LED lighting solutions for bright
+            and efficient spaces.
+          </p>
+
+        </div>
+
+
+        <div class="card">
+
+          <div class="icon">
+            🔌
+          </div>
+
+          <h3>
+            Switches & Sockets
+          </h3>
+
+          <p>
+            Practical electrical accessories
+            for your home and shop.
+          </p>
+
+        </div>
+
+
+        <div class="card">
+
+          <div class="icon">
+            〰️
+          </div>
+
+          <h3>
+            Wires & Cables
+          </h3>
+
+          <p>
+            Electrical wiring products for
+            a variety of requirements.
+          </p>
+
+        </div>
+
+
+        <div class="card">
+
+          <div class="icon">
+            🌀
+          </div>
+
+          <h3>
+            Fans & Accessories
+          </h3>
+
+          <p>
+            Electrical appliances and useful
+            accessories for everyday use.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ABOUT / SERVICES -->
+  <section class="about" id="services">
+
+    <div class="container about-grid">
+
+      <div>
+
+        <h2>
+          Why Sagar Electricals?
+        </h2>
+
+        <p>
+          We aim to make your electrical shopping
+          simple and convenient with a useful range
+          of products and friendly local service.
+        </p>
+
+        <div class="ticks">
+
+          <div>
+            Local shop in Vrindavan
+          </div>
+
+          <div>
+            Wide range of electrical essentials
+          </div>
+
+          <div>
+            Helpful product guidance
+          </div>
+
+          <div>
+            Easy phone & WhatsApp contact
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="about-box">
+
+        <div class="icon">
+          🏪
+        </div>
+
+        <h3>
+          Visit Our Shop
+        </h3>
+
+        <p>
+          <strong>
+            Sagar Electricals
+          </strong>
+        </p>
+
+        <p>
+          Attla Chungi, Parikrama Marg,
+          <br>
+          Vrindavan, Uttar Pradesh
+        </p>
+
+        <a class="btn primary"
+           href="https://www.google.com/maps/search/?api=1&query=Sagar+Electricals+Attla+Chungi+Parikrama+Marg+Vrindavan"
+           target="_blank">
+
+          📍 Get Directions
+
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+
+    <div class="container contact-grid">
+
+      <div>
+
+        <h2>
+          Let's connect.
+        </h2>
+
+        <p>
+          Need an electrical product or want
+          to ask about availability?
+          Call or message Sagar Electricals.
+        </p>
+
+        <div class="buttons" style="margin-top:25px">
+
+          <a class="btn primary"
+             href="tel:+919927780660">
+
+            📞 9927780660
+
+          </a>
+
+          <a class="btn secondary"
+             href="https://wa.me/919927780660"
+             target="_blank">
+
+            💬 WhatsApp
+
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <div class="contact-card">
+
+        <div class="contact-item">
+
+          <span>📍</span>
+
+          <div>
+
+            <strong>
+              Address
+            </strong>
+
+            Attla Chungi,
+            Parikrama Marg,
+            Vrindavan
+
+          </div>
+
+        </div>
+
+
+        <div class="contact-item">
+
+          <span>📱</span>
+
+          <div>
+
+            <strong>
+              Phone
+            </strong>
+
+            9927780660
+
+          </div>
+
+        </div>
+
+
+        <div class="contact-item">
+
+          <span>⚡</span>
+
+          <div>
+
+            <strong>
+              Shop
+            </strong>
+
+            Sagar Electricals
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- FOOTER -->
+  <footer>
+
+    © 2026 Sagar Electricals •
+    Attla Chungi, Parikrama Marg, Vrindavan
+
+  </footer>
+
+
+  <!-- FLOATING WHATSAPP -->
+  <a class="float"
+     href="https://wa.me/919927780660"
+     target="_blank"
+     aria-label="WhatsApp">
+
+    💬
+
+  </a>
+
 </body>
 </html>
